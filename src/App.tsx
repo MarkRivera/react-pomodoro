@@ -11,12 +11,16 @@ const get_greeting = async () => {
   return message;
 }
 
-const greeting = await get_greeting();
-
 function App() {
-  useContextMenu();
+  // useContextMenu();
   const { settingsMenu, toggleSettingsMenu } = useSettingsMenu();
-  
+  async function getGreeting() {
+    const message = await get_greeting();
+    console.log(message);
+  }
+
+  getGreeting();
+
   return (
     <div className="bg-indigo-900 text-white h-full w-full mr-3 overflow-hidden">
       <Cog toggleSettingsMenu={toggleSettingsMenu} />
